@@ -16,8 +16,11 @@ Ext.define('AM.controller.Users', {
 
     init: function() {
         this.control({
-            'userlist': {
+            'viewport > userlist': {
                 itemdblclick: this.editUser
+            },
+            'useredit button[action=save]': {
+                click: this.updateUser
             }
         })
     },
@@ -26,6 +29,17 @@ Ext.define('AM.controller.Users', {
         let view = Ext.widget('useredit');
 
         view.down('form').loadRecord(record);
+    },
+
+    updateUser: function(button) {
+        let win = button.up('window');
+        let form = win.down('form');
+        let record = form.getRecord();
+        let values = form.getValues();
+
+        record.set(values);
+        win.close();
+
     }
 
 });
