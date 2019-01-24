@@ -10,12 +10,10 @@ Ext.application({
 
     launch: function() {
         Ext.create('Ext.container.Viewport', {
-            layot: 'fit',
-            items: [{
-                xtype: 'panel',
-                title: 'Users',
-                html: 'List of users will go here'
-            }]
+            layout: 'fit',
+            items: {
+                xtype: 'userlist'
+            }
         });
     }
 })
