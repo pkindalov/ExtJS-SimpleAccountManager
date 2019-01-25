@@ -40,6 +40,8 @@ Ext.define('AM.controller.Users', {
         record.set(values);
         win.close();
 
+        // synchronize the store after editing the record
+        this.getUsersStore().sync();
     }
 
 });
